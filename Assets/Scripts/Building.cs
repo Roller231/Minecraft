@@ -9,6 +9,8 @@ public class Building : MonoBehaviour
 {
     public int hp = 100;
 
+    public int indexScene;
+
     public float maxDistance = 0.0f;
     public int curIndex = 0;
     public List<GameObject> Cubes = new List<GameObject>();
@@ -45,7 +47,7 @@ public class Building : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            OpenScene.OpenSceneVoid(1);
+            OpenScene.OpenSceneVoid(indexScene);
         }
 
 
@@ -208,39 +210,16 @@ public class Building : MonoBehaviour
                 }
             }
         }
+        
+    }
 
+    public void ExplosionButton()
+    {
+        if(GameObject.FindGameObjectsWithTag("TNT").Length == 0) return;
 
-        // public void SetHorizontal(bool forward)
-        // {
-        //     if (forward)
-        //     {
-        //         hotizontal = 1;
-        //     }
-        //     else
-        //     {
-        //         hotizontal = -1;
-        //     }
-        //
-        //
-        // }
-        // public void SetVertical(bool left)
-        // {
-        //     if (left)
-        //     {
-        //         vertical = 1;
-        //     }
-        //     else
-        //     {
-        //         vertical = -1;
-        //     }
-        //
-        //
-        // }
-        //
-        // public void SetZero()
-        // {
-        //     vertical = 0;
-        //     hotizontal = 0;
-        // }
+        foreach (var tnt in GameObject.FindGameObjectsWithTag("TNT"))
+        {
+            tnt.GetComponent<TntExp>().ExplosionButton();
+        }
     }
 }

@@ -51,4 +51,32 @@ public class TntExp : MonoBehaviour
 	    Gizmos.color = Color.blue;
 	    Gizmos.DrawWireSphere(transform.position, radius);
     }
+
+    public void ExplosionButton()
+    {
+	    Collider[] col = Physics.OverlapSphere(transform.position, radius);
+	    gameObject.GetComponent<AudioSource>().Play();
+	    foreach (var c in col)
+	    {
+		    if (c.gameObject.layer != 7 && c.tag != "Player")
+		    {
+			    c.GetComponent<Rigidbody>().isKinematic = false;
+			    c.GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, radius);
+			    if (c.tag == "Cube")
+			    {
+				    c.GetComponent<Cube>().enabled = false;
+				    Destroy(c.gameObject, 4f);
+			    }
+			    else if (c.tag == "Enemy")
+			    {
+					    
+				    Destroy(c.gameObject, 1);
+			    }
+
+
+		    }
+
+	    }
+	    Destroy(gameObject, 1);
+    }
 }

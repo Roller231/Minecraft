@@ -16,6 +16,9 @@ public class ControllUi : MonoBehaviour
             SpawnPanel.SetActive(true);
             Time.timeScale = 0;
 
+            GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().lockCursor = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().cameraCanMove = false;
+
             Cursor.lockState = CursorLockMode.None;
 
         }
@@ -25,6 +28,9 @@ public class ControllUi : MonoBehaviour
     {
         SpawnPanel.SetActive(false);
         Time.timeScale = 1;
+        
+        GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().lockCursor = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().cameraCanMove = true;
     
         Cursor.lockState = CursorLockMode.Locked;
 

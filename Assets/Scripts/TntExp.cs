@@ -40,10 +40,7 @@ public class TntExp : MonoBehaviour
 
 
 			    }
-			    else if (c.tag == "Player")
-			    {
-				    c.GetComponent<Rigidbody>().AddExplosionForce(force/2, transform.position, radius);
-			    }
+
 		    }
 		    Destroy(gameObject, 1);
 	    }

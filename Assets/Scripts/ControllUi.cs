@@ -30,4 +30,24 @@ public class ControllUi : MonoBehaviour
 
 
     }
+    
+    public void SetPanelFalseMobile()
+    {
+        SpawnPanel.SetActive(false);
+        Time.timeScale = 1;
+    
+        
+
+
+    }
+    
+    public void SetPanelTrueMobile()
+    {
+        SpawnPanel.SetActive(true);
+        Time.timeScale = 0;
+    
+        Cursor.lockState = CursorLockMode.None;
+
+
+    }
 }

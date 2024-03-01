@@ -12,9 +12,9 @@ namespace YG
 
         // Тестовые сохранения для демо сцены
         // Можно удалить этот код, но тогда удалите и демо (папка Example)
-        public bool haveUnvisible = false;                       // Можно задать полям значения по умолчанию
+        public bool haveSuper = false;                       // Можно задать полям значения по умолчанию
                      // Можно задать полям значения по умолчанию
-        public bool[] locks = new []{true, false, true, false, false, true, true, false};
+        public bool[] lockest = new []{true, false, true, false, false, true, true, false};
         
 
 

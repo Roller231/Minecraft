@@ -73,15 +73,15 @@ public class GameManager : MonoBehaviour
 
     public void MySave()
     {
-        YandexGame.savesData.haveUnvisible = haveUnreal;
-        YandexGame.savesData.locks = locked;
+        YandexGame.savesData.haveSuper = haveUnreal;
+        YandexGame.savesData.lockest = locked;
         YandexGame.SaveProgress();
     }
 
     public void MyLoad()
     {
-        haveUnreal = YandexGame.savesData.haveUnvisible;
-        locked= YandexGame.savesData.locks ;
+        haveUnreal = YandexGame.savesData.haveSuper;
+        locked= YandexGame.savesData.lockest ;
     }
     
 }

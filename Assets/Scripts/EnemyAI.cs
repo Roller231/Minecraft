@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
         if (other.gameObject.tag == "Player" && Math.Abs(delay) >= 2 && !GameObject.Find("GameManager").GetComponent<GameManager>().haveUnreal)
         {
             delay = 0;
-            OpenScene.OpenSceneVoid(1);
+            OpenScene.OpenSceneVoid(GameObject.FindGameObjectWithTag("Player").GetComponent<Building>().indexScene);
 Debug.Log("DAMAGEEE");
         }
     }

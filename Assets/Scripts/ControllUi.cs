@@ -42,7 +42,7 @@ public class ControllUi : MonoBehaviour
         SpawnPanel.SetActive(false);
         Time.timeScale = 1;
     
-        
+        Cursor.lockState = CursorLockMode.None;
 
 
     }

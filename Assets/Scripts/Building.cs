@@ -26,6 +26,8 @@ public class Building : MonoBehaviour
     private Vector2 p_rayDirection;
     private Camera m_Camera;
 
+    public bool isMobile;
+
     // public FixedJoystick _joystick;
     // public float moveSpeed = 10;
 
@@ -45,7 +47,11 @@ public class Building : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        
+        p_ray = m_Camera.ScreenPointToRay(p_rayDirection);
+        if (!isMobile)
+        {
+                    if (Input.GetKeyDown(KeyCode.R))
         {
             OpenScene.OpenSceneVoid(indexScene);
         }
@@ -68,7 +74,7 @@ public class Building : MonoBehaviour
         }
 
 
-        p_ray = m_Camera.ScreenPointToRay(p_rayDirection);
+
         if (Physics.Raycast(p_ray, out p_hit) && p_hit.collider != null)
         {
             if (p_hit.collider.tag == "Cube")
@@ -125,6 +131,19 @@ public class Building : MonoBehaviour
                 Prefab.SetActive(false);
             }
         }
+        }
+        else
+        {
+            if (Physics.Raycast(p_ray, out p_hit) && p_hit.collider != null)
+            {
+                if (p_hit.collider.tag == "Cube")
+                {
+                    Prefab.transform.position = p_hit.collider.transform.position;
+                    Prefab.SetActive(true);
+                }
+            }
+        }
+
     }
 
     public void SelectCube(int indexInList)
@@ -204,7 +223,7 @@ public class Building : MonoBehaviour
         {
             if (p_hit.collider.tag == "Cube")
             {
-                if (Input.GetMouseButtonDown(0) && p_hit.collider.gameObject.layer != 7)
+                if (p_hit.collider.gameObject.layer != 7)
                 {
                     Destroy(p_hit.collider.gameObject);
                 }
@@ -215,11 +234,14 @@ public class Building : MonoBehaviour
 
     public void ExplosionButton()
     {
-        if(GameObject.FindGameObjectsWithTag("TNT").Length == 0) return;
 
-        foreach (var tnt in GameObject.FindGameObjectsWithTag("TNT"))
+        foreach (var tnt in GameObject.FindGameObjectsWithTag("Cube"))
         {
-            tnt.GetComponent<TntExp>().ExplosionButton();
+            if (tnt.layer == 3)
+            {
+                Debug.Log("1111");
+                tnt.GetComponent<TntExp>().ExplosionButton();
+            }
         }
     }
 }

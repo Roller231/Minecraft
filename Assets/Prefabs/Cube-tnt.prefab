@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 5136336830042326704}
   - component: {fileID: 4029069884190043229}
   - component: {fileID: 1329618766725908378}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube-tnt
-  m_TagString: TNT
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
